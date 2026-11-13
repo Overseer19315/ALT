@@ -1,0 +1,716 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#08090d">
+    <meta name="description" content="A Little History">
+    <title>A LITTLE HISTORY</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<main id="app">
+
+    <!-- PANTALLA DE ACCESO -->
+    <section id="accessScreen" class="access-screen">
+
+        <div class="access-background">
+            <div class="access-glow glow-one"></div>
+            <div class="access-glow glow-two"></div>
+            <div class="grid-overlay"></div>
+        </div>
+
+        <div class="access-content">
+
+            <div class="access-overline">
+                <span></span>
+                UNA HISTORIA EN MOVIMIENTO
+                <span></span>
+            </div>
+
+            <h1 class="main-title">
+                A LITTLE
+                <span>HISTORY</span>
+            </h1>
+
+            <p class="access-description">
+                Algunas cosas no necesitan ser explicadas.
+            </p>
+
+            <div class="login-card">
+
+                <div class="card-header">
+                    <span>ACCESO</span>
+                    <span class="access-status">
+                        <i></i> DISPONIBLE
+                    </span>
+                </div>
+
+                <div class="lock-icon">
+                    <svg viewBox="0 0 64 64" aria-hidden="true">
+                        <path d="M20 28V19a12 12 0 0 1 24 0v9"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+                        <rect x="12" y="28" width="40" height="29"
+                            rx="4"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+                        <circle cx="32" cy="41" r="3"
+                            fill="currentColor"/>
+                        <path d="M32 44v5"
+                            stroke="currentColor"
+                            stroke-width="2"/>
+                    </svg>
+                </div>
+
+                <h2>Antes de continuar</h2>
+
+                <p class="login-hint">
+                    No se puede guardar en una fotografía todo lo que consigue transmitir.
+                </p>
+
+                <form id="loginForm">
+                    <label for="passwordInput">CONTRASEÑA</label>
+
+                    <input
+                        id="passwordInput"
+                        type="password"
+                        placeholder="Escribe la contraseña"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <button id="enterButton" type="submit">
+                        <span>ENTRAR</span>
+                        <span class="button-arrow">→</span>
+                    </button>
+
+                    <p id="loginFeedback" class="login-feedback"
+                        aria-live="polite"></p>
+                </form>
+
+            </div>
+
+            <div class="access-footer">
+                <span>A LITTLE HISTORY</span>
+                <span>UNA HISTORIA QUE CONTINÚA</span>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- HISTORIA -->
+    <section id="storyScreen" class="story-screen" hidden>
+
+        <div class="scene-frame">
+
+            <svg
+                id="sceneSvg"
+                viewBox="0 0 1400 900"
+                preserveAspectRatio="xMidYMid meet"
+                role="img"
+                aria-label="Historia animada de dos personajes Stickman"
+            >
+
+                <defs>
+
+                    <linearGradient id="introSky" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#101726"/>
+                        <stop offset="60%" stop-color="#25283a"/>
+                        <stop offset="100%" stop-color="#4b3d42"/>
+                    </linearGradient>
+
+                    <linearGradient id="courtSky" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#08080d"/>
+                        <stop offset="70%" stop-color="#21141c"/>
+                        <stop offset="100%" stop-color="#382029"/>
+                    </linearGradient>
+
+                    <linearGradient id="winterSky" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#101b2c"/>
+                        <stop offset="65%" stop-color="#263447"/>
+                        <stop offset="100%" stop-color="#59616a"/>
+                    </linearGradient>
+
+                    <linearGradient id="groundGradient" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#33333b"/>
+                        <stop offset="100%" stop-color="#111319"/>
+                    </linearGradient>
+
+                    <radialGradient id="dreamFill">
+                        <stop offset="0%" stop-color="#f7f0df" stop-opacity=".94"/>
+                        <stop offset="75%" stop-color="#e8e5df" stop-opacity=".82"/>
+                        <stop offset="100%" stop-color="#d9dce1" stop-opacity=".72"/>
+                    </radialGradient>
+
+                    <radialGradient id="spotlight">
+                        <stop offset="0%" stop-color="#b94b59" stop-opacity=".35"/>
+                        <stop offset="100%" stop-color="#b94b59" stop-opacity="0"/>
+                    </radialGradient>
+
+                    <filter id="softGlow" x="-100%" y="-100%" width="300%" height="300%">
+                        <feGaussianBlur stdDeviation="18"/>
+                    </filter>
+
+                    <filter id="smallGlow" x="-100%" y="-100%" width="300%" height="300%">
+                        <feGaussianBlur stdDeviation="5"/>
+                    </filter>
+
+                </defs>
+
+
+                <!-- FONDO INICIAL -->
+                <g id="introBackdrop" class="backdrop is-visible">
+
+                    <rect width="1400" height="900" fill="url(#introSky)"/>
+
+                    <circle cx="1090" cy="155" r="64"
+                        fill="#e5d9c5" opacity=".7"/>
+
+                    <circle cx="1090" cy="155" r="95"
+                        fill="#d6d0c2" opacity=".12"
+                        filter="url(#softGlow)"/>
+
+                    <g fill="#e9e4dd" opacity=".55">
+                        <circle cx="145" cy="118" r="2"/>
+                        <circle cx="265" cy="212" r="2"/>
+                        <circle cx="410" cy="95" r="1.7"/>
+                        <circle cx="610" cy="170" r="2"/>
+                        <circle cx="840" cy="85" r="1.5"/>
+                        <circle cx="970" cy="242" r="1.5"/>
+                        <circle cx="1220" cy="275" r="2"/>
+                        <circle cx="1320" cy="130" r="1.7"/>
+                    </g>
+
+                    <path d="M0 560 L160 470 L300 530 L470 430 L640 535
+                        L850 440 L1020 520 L1190 430 L1400 520 L1400 900 L0 900Z"
+                        fill="#1a202b"/>
+
+                    <path d="M0 620 L220 560 L400 610 L620 535
+                        L810 610 L1040 545 L1220 600 L1400 550
+                        L1400 900 L0 900Z"
+                        fill="#242733"/>
+
+                    <g fill="#111722">
+                        <rect x="50" y="520" width="105" height="220"/>
+                        <rect x="170" y="565" width="150" height="175"/>
+                        <rect x="1060" y="530" width="120" height="210"/>
+                        <rect x="1195" y="565" width="155" height="175"/>
+                    </g>
+
+                    <g fill="#bd9d75" opacity=".25">
+                        <rect x="75" y="550" width="14" height="22"/>
+                        <rect x="112" y="550" width="14" height="22"/>
+                        <rect x="195" y="590" width="18" height="25"/>
+                        <rect x="238" y="590" width="18" height="25"/>
+                        <rect x="1085" y="560" width="16" height="24"/>
+                        <rect x="1125" y="560" width="16" height="24"/>
+                        <rect x="1225" y="590" width="18" height="25"/>
+                        <rect x="1270" y="590" width="18" height="25"/>
+                    </g>
+
+                    <path d="M0 735 Q700 710 1400 735 L1400 900 L0 900Z"
+                        fill="url(#groundGradient)"/>
+
+                    <path d="M0 750 Q700 725 1400 750"
+                        fill="none" stroke="#8e8790"
+                        stroke-opacity=".15" stroke-width="3"/>
+
+                    <path d="M100 840 L1300 840"
+                        stroke="#ded4c6" stroke-opacity=".05"
+                        stroke-width="2"/>
+
+                </g>
+
+
+                <!-- FONDO DEL JUICIO -->
+                <g id="courtBackdrop" class="backdrop">
+
+                    <rect width="1400" height="900" fill="url(#courtSky)"/>
+
+                    <ellipse cx="700" cy="300" rx="580" ry="290"
+                        fill="url(#spotlight)"/>
+
+                    <path d="M70 560 V285 Q70 80 280 80 Q490 80 490 285 V560"
+                        fill="none" stroke="#4a3037"
+                        stroke-width="26" opacity=".65"/>
+
+                    <path d="M910 560 V285 Q910 80 1120 80 Q1330 80 1330 285 V560"
+                        fill="none" stroke="#4a3037"
+                        stroke-width="26" opacity=".65"/>
+
+                    <path d="M490 480 V245 Q490 95 700 95 Q910 95 910 245 V480"
+                        fill="none" stroke="#70404a"
+                        stroke-width="5" opacity=".42"/>
+
+                    <g fill="#17131a">
+                        <rect x="30" y="540" width="70" height="230"/>
+                        <rect x="1300" y="540" width="70" height="230"/>
+                        <rect x="105" y="585" width="1190" height="185"/>
+                    </g>
+
+                    <g fill="#3b2029" opacity=".75">
+                        <rect x="110" y="560" width="1180" height="13"/>
+                        <rect x="160" y="585" width="1080" height="9"/>
+                    </g>
+
+                    <path d="M0 775 H1400 V900 H0Z"
+                        fill="#0b0c11"/>
+
+                    <path d="M0 780 H1400"
+                        stroke="#86404b" stroke-width="3"
+                        opacity=".45"/>
+
+                    <text x="700" y="88"
+                        text-anchor="middle"
+                        fill="#d9c2b9"
+                        font-family="Georgia, serif"
+                        font-size="31"
+                        letter-spacing="13"
+                        opacity=".85">
+                        LOS DE ARRIBA
+                    </text>
+
+                    <text x="700" y="122"
+                        text-anchor="middle"
+                        fill="#a77a7c"
+                        font-family="Arial, sans-serif"
+                        font-size="12"
+                        letter-spacing="6"
+                        opacity=".7">
+                        EL CONSEJO
+                    </text>
+
+                </g>
+
+
+                <!-- FONDO INVERNAL -->
+                <g id="winterBackdrop" class="backdrop">
+
+                    <rect width="1400" height="900" fill="url(#winterSky)"/>
+
+                    <circle cx="700" cy="190" r="130"
+                        fill="#dce5eb" opacity=".06"
+                        filter="url(#softGlow)"/>
+
+                    <g fill="#dbe3e9" opacity=".75">
+                        <circle cx="100" cy="90" r="2"/>
+                        <circle cx="290" cy="160" r="2"/>
+                        <circle cx="480" cy="70" r="1.8"/>
+                        <circle cx="880" cy="115" r="2"/>
+                        <circle cx="1110" cy="80" r="1.8"/>
+                        <circle cx="1280" cy="220" r="2"/>
+                        <circle cx="730" cy="250" r="1.5"/>
+                    </g>
+
+                    <!-- Edificios -->
+                    <g fill="#172331">
+                        <path d="M0 410 H210 V745 H0Z"/>
+                        <path d="M200 470 H390 V745 H200Z"/>
+                        <path d="M1010 450 H1200 V745 H1010Z"/>
+                        <path d="M1190 390 H1400 V745 H1190Z"/>
+                    </g>
+
+                    <g fill="#e5c99b" opacity=".42">
+                        <rect x="35" y="455" width="26" height="42"/>
+                        <rect x="95" y="455" width="26" height="42"/>
+                        <rect x="35" y="535" width="26" height="42"/>
+                        <rect x="95" y="535" width="26" height="42"/>
+
+                        <rect x="240" y="515" width="30" height="45"/>
+                        <rect x="315" y="515" width="30" height="45"/>
+
+                        <rect x="1045" y="495" width="28" height="43"/>
+                        <rect x="1110" y="495" width="28" height="43"/>
+
+                        <rect x="1230" y="435" width="30" height="48"/>
+                        <rect x="1305" y="435" width="30" height="48"/>
+                        <rect x="1230" y="525" width="30" height="48"/>
+                        <rect x="1305" y="525" width="30" height="48"/>
+                    </g>
+
+                    <!-- Farola izquierda -->
+                    <g>
+                        <path d="M220 365 V735"
+                            stroke="#171b22" stroke-width="12"/>
+                        <path d="M220 365 L250 345 L278 345"
+                            fill="none" stroke="#171b22" stroke-width="10"/>
+                        <path d="M260 345 Q278 330 296 345 L289 375 H263Z"
+                            fill="#f2d8a9" opacity=".85"/>
+                        <circle cx="276" cy="355" r="75"
+                            fill="#e8c996" opacity=".22"
+                            filter="url(#softGlow)"/>
+                    </g>
+
+                    <!-- Farola derecha -->
+                    <g>
+                        <path d="M1170 355 V735"
+                            stroke="#171b22" stroke-width="12"/>
+                        <path d="M1170 355 L1140 335 L1112 335"
+                            fill="none" stroke="#171b22" stroke-width="10"/>
+                        <path d="M1094 335 Q1112 320 1130 335 L1123 365 H1097Z"
+                            fill="#f2d8a9" opacity=".85"/>
+                        <circle cx="1110" cy="345" r="75"
+                            fill="#e8c996" opacity=".22"
+                            filter="url(#softGlow)"/>
+                    </g>
+
+                    <!-- Suelo nevado -->
+                    <path d="M0 735 Q700 705 1400 735 L1400 900 H0Z"
+                        fill="#b9c4cc"/>
+
+                    <path d="M0 755 Q700 730 1400 755"
+                        fill="none" stroke="#edf2f5"
+                        stroke-width="9" opacity=".55"/>
+
+                    <path d="M0 770 Q700 746 1400 770"
+                        fill="none" stroke="#8795a3"
+                        stroke-width="4" opacity=".4"/>
+
+                </g>
+
+
+                <!-- ESCENARIO DEL SUEÑO -->
+                <g id="dream" class="dream">
+
+                    <!-- Nube principal -->
+                    <g class="dream-cloud">
+                        <ellipse cx="700" cy="325" rx="225" ry="139"
+                            fill="url(#dreamFill)"
+                            stroke="#f5f1e8"
+                            stroke-width="5"/>
+
+                        <circle cx="535" cy="263" r="48"
+                            fill="#f0eee8" opacity=".9"/>
+                        <circle cx="586" cy="215" r="55"
+                            fill="#f0eee8" opacity=".9"/>
+                        <circle cx="685" cy="190" r="62"
+                            fill="#f0eee8" opacity=".9"/>
+                        <circle cx="790" cy="215" r="55"
+                            fill="#f0eee8" opacity=".9"/>
+                        <circle cx="865" cy="270" r="43"
+                            fill="#f0eee8" opacity=".9"/>
+
+                        <ellipse cx="700" cy="325" rx="225" ry="139"
+                            fill="none" stroke="#ffffff"
+                            stroke-width="2" opacity=".75"/>
+                    </g>
+
+                    <!-- Pequeños círculos de pensamiento -->
+                    <circle cx="485" cy="465" r="20"
+                        fill="#e8e5df" opacity=".9"/>
+                    <circle cx="450" cy="510" r="11"
+                        fill="#e8e5df" opacity=".8"/>
+
+                    <!-- Stickman azul -->
+                    <g class="dream-figure dream-blue">
+                        <circle cx="628" cy="290" r="22"
+                            fill="none" stroke="#344b69"
+                            stroke-width="8"/>
+
+                        <path d="M628 313 V385"
+                            stroke="#344b69" stroke-width="8"
+                            stroke-linecap="round"/>
+
+                        <path d="M628 330 L580 357"
+                            stroke="#344b69" stroke-width="8"
+                            stroke-linecap="round"/>
+
+                        <path d="M628 330 L695 335"
+                            stroke="#344b69" stroke-width="8"
+                            stroke-linecap="round"/>
+
+                        <path d="M628 385 L595 433 M628 385 L660 433"
+                            stroke="#344b69" stroke-width="8"
+                            stroke-linecap="round"/>
+
+                        <path d="M606 343 L620 337"
+                            stroke="#347ed0" stroke-width="11"
+                            stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Stickman blanco -->
+                    <g class="dream-figure dream-white">
+                        <circle cx="772" cy="290" r="22"
+                            fill="none" stroke="#6b6b70"
+                            stroke-width="8"/>
+
+                        <path d="M772 313 V385"
+                            stroke="#6b6b70" stroke-width="8"
+                            stroke-linecap="round"/>
+
+                        <path d="M772 330 L705 335"
+                            stroke="#6b6b70" stroke-width="8"
+                            stroke-linecap="round"/>
+
+                        <path d="M772 330 L820 357"
+                            stroke="#6b6b70" stroke-width="8"
+                            stroke-linecap="round"/>
+
+                        <path d="M772 385 L740 433 M772 385 L805 433"
+                            stroke="#6b6b70" stroke-width="8"
+                            stroke-linecap="round"/>
+
+                        <path d="M785 337 L800 345"
+                            stroke="#f0eee8" stroke-width="11"
+                            stroke-linecap="round"/>
+                    </g>
+
+                    <!-- Unión de las manos -->
+                    <path d="M695 335 L705 335"
+                        stroke="#e8e2d8"
+                        stroke-width="10"
+                        stroke-linecap="round"/>
+
+                    <circle cx="700" cy="335" r="8"
+                        fill="#e9e2d6"/>
+
+                    <text x="700" y="476"
+                        text-anchor="middle"
+                        fill="#56555a"
+                        font-family="Georgia, serif"
+                        font-size="18"
+                        letter-spacing="4">
+                        UN MOMENTO IMAGINADO
+                    </text>
+
+                </g>
+
+
+                <!-- LANZA -->
+                <g id="spear" class="spear">
+                    <g id="spearMotion">
+                        <path d="M0 -10 L0 205"
+                            stroke="#b6b4b1"
+                            stroke-width="10"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 -65 L-18 -10 L0 8 L18 -10Z"
+                            fill="#dedbd4"/>
+
+                        <path d="M-22 160 L0 190 L22 160"
+                            fill="none" stroke="#777b82"
+                            stroke-width="5"/>
+
+                        <path d="M-10 45 L10 45"
+                            stroke="#d3d0c9"
+                            stroke-width="4"/>
+                    </g>
+                </g>
+
+
+                <!-- FRAGMENTOS DE LA IMAGINACIÓN -->
+                <g id="dreamFragments" class="dream-fragments">
+                    <path d="M475 250 L515 220 L525 275Z"/>
+                    <path d="M850 240 L888 265 L844 290Z"/>
+                    <path d="M580 430 L605 455 L565 466Z"/>
+                    <path d="M790 420 L835 440 L800 464Z"/>
+                    <path d="M700 180 L725 140 L740 195Z"/>
+                    <path d="M510 355 L470 385 L525 400Z"/>
+                    <path d="M895 350 L925 380 L875 395Z"/>
+                </g>
+
+
+                <!-- EFECTO DE IMPACTO -->
+                <circle id="impactFlash" class="impact-flash"
+                    cx="700" cy="330" r="170"/>
+
+
+                <!-- ELEMENTOS DEL CONSEJO -->
+                <g id="councilFurniture"></g>
+                <g id="councilMembers"></g>
+
+
+                <!-- ANDRÉS: CINTA AZUL -->
+                <g id="andres" class="character"
+                    transform="translate(410 535)">
+
+                    <g id="andresMotion" class="character-motion">
+
+                        <circle cx="0" cy="0" r="31"
+                            fill="none" stroke="#d5d7da"
+                            stroke-width="10"/>
+
+                        <path d="M0 32 V128"
+                            stroke="#d5d7da" stroke-width="10"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 60 L-49 96"
+                            stroke="#d5d7da" stroke-width="10"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 60 L47 94"
+                            stroke="#d5d7da" stroke-width="10"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 128 L-38 190 M0 128 L40 190"
+                            stroke="#d5d7da" stroke-width="10"
+                            stroke-linecap="round"/>
+
+                        <!-- Cinta azul en el brazo -->
+                        <path d="M-34 70 L-22 83"
+                            stroke="#347ed0" stroke-width="13"
+                            stroke-linecap="round"/>
+
+                    </g>
+                </g>
+
+
+                <!-- BLANCA: CINTA BLANCA -->
+                <g id="blanca" class="character"
+                    transform="translate(1000 535)">
+
+                    <g id="blancaMotion" class="character-motion">
+
+                        <circle cx="0" cy="0" r="31"
+                            fill="none" stroke="#dedbd4"
+                            stroke-width="10"/>
+
+                        <path d="M0 32 V128"
+                            stroke="#dedbd4" stroke-width="10"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 60 L-47 94"
+                            stroke="#dedbd4" stroke-width="10"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 60 L49 96"
+                            stroke="#dedbd4" stroke-width="10"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 128 L-39 190 M0 128 L39 190"
+                            stroke="#dedbd4" stroke-width="10"
+                            stroke-linecap="round"/>
+
+                        <!-- Cinta blanca -->
+                        <path d="M25 76 L38 87"
+                            stroke="#ffffff" stroke-width="13"
+                            stroke-linecap="round"/>
+
+                    </g>
+                </g>
+
+
+                <!-- ANDRÉS ANTE EL CONSEJO -->
+                <g id="blueAccused" class="character"
+                    transform="translate(700 575)">
+
+                    <g class="character-motion">
+
+                        <circle cx="0" cy="0" r="35"
+                            fill="none" stroke="#d6d8dc"
+                            stroke-width="11"/>
+
+                        <path d="M0 36 V145"
+                            stroke="#d6d8dc" stroke-width="11"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 68 L-58 108"
+                            stroke="#d6d8dc" stroke-width="11"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 68 L58 108"
+                            stroke="#d6d8dc" stroke-width="11"
+                            stroke-linecap="round"/>
+
+                        <path d="M0 145 L-43 210 M0 145 L43 210"
+                            stroke="#d6d8dc" stroke-width="11"
+                            stroke-linecap="round"/>
+
+                        <path d="M-42 82 L-28 95"
+                            stroke="#347ed0" stroke-width="15"
+                            stroke-linecap="round"/>
+
+                    </g>
+                </g>
+
+
+                <!-- PAPELES DEL JUICIO -->
+                <g id="paperLayer"></g>
+
+
+                <!-- NIEVE -->
+                <g id="snowLayer"></g>
+
+
+                <!-- DESTELLO SUAVE DEL INVIERNO -->
+                <rect id="winterGlow"
+                    x="0" y="0" width="1400" height="900"
+                    fill="#dce7ef" opacity="0"/>
+
+            </svg>
+
+        </div>
+
+
+        <!-- SUBTÍTULOS -->
+        <div id="subtitlePanel" class="subtitle-panel"
+            aria-live="polite">
+
+            <div class="subtitle-topline">
+                <span id="subtitleSpeaker">NARRADOR</span>
+                <span class="subtitle-line"></span>
+            </div>
+
+            <p id="subtitleText"></p>
+
+        </div>
+
+
+        <!-- CONTROLES -->
+        <div id="storyControls" class="story-controls">
+
+            <button id="pauseButton" type="button"
+                aria-label="Pausar historia" aria-pressed="false">
+                <span id="pauseIcon">Ⅱ</span>
+                <span id="pauseText">PAUSAR</span>
+            </button>
+
+            <button id="restartButton" type="button"
+                aria-label="Reiniciar historia">
+                ↺ <span>REINICIAR</span>
+            </button>
+
+        </div>
+
+
+        <!-- FUNDIDO A NEGRO -->
+        <div id="blackout" class="blackout"></div>
+
+
+        <!-- FINAL -->
+        <div id="endingScreen" class="ending-screen">
+
+            <div class="ending-content">
+
+                <div class="ending-overline">
+                    A LITTLE HISTORY
+                </div>
+
+                <div class="ending-divider"></div>
+
+                <h2>
+                    Esto no termina aquí.
+                    <span>Algunas historias necesitan más de una página.</span>
+                </h2>
+
+                <p>TO BE CONTINUED...</p>
+
+                <div class="ending-divider ending-divider-bottom"></div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
